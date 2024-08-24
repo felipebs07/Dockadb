@@ -3,8 +3,8 @@ package com.felipebs.dockadb_api.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.felipebs.dockadb_api.enuns.EGeografiaRegiaoLevel1;
-import com.felipebs.dockadb_api.enuns.EGeografiaRegiaoLevel2;
+import com.felipebs.dockadb_api.enuns.continente.EGeografiaRegiaoLevel1;
+import com.felipebs.dockadb_api.enuns.continente.EGeografiaRegiaoLevel2;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,7 +17,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Builder
 @JsonPropertyOrder({ "nome", "regiaoGeografica1", "regiaoGeografica2" })
-@Document(collection = "localizacao")
+@Document(collection = "pais")
 public class Pais {
 
     @Id

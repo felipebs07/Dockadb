@@ -23,10 +23,10 @@ public class PaisCustomRepository {
     private String mongoDb;
 
     @Autowired
-    private IPaisRepository countryRepository;
+    private IPaisRepository paisRepository;
 
-    public IPaisRepository countryRepository() {
-        return countryRepository;
+    public IPaisRepository paisRepository() {
+        return paisRepository;
     }
 
     public void salvaSeNaoExiste(Pais entity) {

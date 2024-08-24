@@ -1,8 +1,8 @@
 package com.felipebs.dockadb_api.service;
 
 import com.felipebs.dockadb_api.dto.ContinenteDTO;
-import com.felipebs.dockadb_api.enuns.EGeografiaRegiaoLevel1;
-import com.felipebs.dockadb_api.enuns.EGeografiaRegiaoLevel2;
+import com.felipebs.dockadb_api.enuns.continente.EGeografiaRegiaoLevel1;
+import com.felipebs.dockadb_api.enuns.continente.EGeografiaRegiaoLevel2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.felipebs.dockadb_api.enuns;
+package com.felipebs.dockadb_api.enuns.continente;
 
 import lombok.Getter;
 

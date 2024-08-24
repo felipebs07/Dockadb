@@ -8,7 +8,7 @@ import java.util.List;
 
 public class JsonUtil {
 
-    public static List<GenericoDTO> convertJsonToMap(String jsonString) throws IOException {
+    public static List<GenericoDTO> converterJsonParaMap(String jsonString) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(jsonString, objectMapper.getTypeFactory().constructCollectionType(List.class, GenericoDTO.class));
     }
