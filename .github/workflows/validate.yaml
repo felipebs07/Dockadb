@@ -9,20 +9,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Capturar autor do commit
-      run: echo "Capturar autor do commit é ${{ github.actor }}"
+    - name: Print user
+      run: echo "User is ${{ github.actor }}"
       
-    - name: Checkout do código
+    - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Checando arquivos não permitidos
+    - name: Check for unwanted files
       run: |
         # Obtém a lista de arquivos alterados
-        changed_files=$(git diff --name-only HEAD~1 HEAD)
+        changed_files=$(git diff --name-only HEAD^ HEAD)
 
+        # Verifica se algum dos arquivos alterados está na lista de arquivos indesejados
         if echo "$changed_files" | grep -E '(^\.github/|^Dockerfile|^docker-compose.yml)'; then
           if [ "${{ github.actor }}" != "felipebs07" ]; then
-            echo "Error: Comitar arquivos no .github ou relacionados ao Docker não são permitidos."
+            echo "Error: Committing files in .github/ or Docker-related files is not allowed unless you are felipebs."
             exit 1
           fi
         fi
