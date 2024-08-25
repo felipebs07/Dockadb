@@ -60,7 +60,22 @@ jobs:
         MONGO_DB_USERNAME: ${{ secrets.MONGO_DB_USERNAME }}
         MONGO_DB_PASSWORD: ${{ secrets.MONGO_DB_PASSWORD }}
         MONGO_DB_PARAMS: ${{ secrets.MONGO_DB_PARAMS }}
+    - name: Wait for service to be ready
+      run: |
+        for i in {1..10}; do
+          if curl --fail http://localhost:8008/health; then
+            echo "Service is up!"
+            break
+          fi
+          echo "Waiting for service..."
+          sleep 5
+        done
+      shell: bash
 
+    - name: Check Docker Compose logs
+      run: |
+        docker-compose logs
+        
     - name: Run tests
       run: |
         # Aqui você pode rodar testes ou comandos que verifiquem a funcionalidade da sua aplicação
