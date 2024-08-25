@@ -21,7 +21,7 @@ jobs:
         changed_files=$(git diff --name-only HEAD~1 HEAD)
 
         if echo "$changed_files" | grep -E '(^\.github/|^Dockerfile|^docker-compose.yml)'; then
-          if [ "${{ github.actor }}" != "felipebs" ]; then
+          if [ "${{ github.actor }}" != "felipebs07" ]; then
             echo "Error: Comitar arquivos no .github ou relacionados ao Docker não são permitidos."
             exit 1
           fi
