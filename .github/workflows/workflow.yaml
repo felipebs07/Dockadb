@@ -43,6 +43,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-buildx-
 
+    - name: Install Docker Compose
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker-compose
+        
     - name: Build Docker image
       run: |
         docker build -t dockadb-app ./dockadb-api
