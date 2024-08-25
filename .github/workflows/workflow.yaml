@@ -79,6 +79,10 @@ jobs:
     - name: Run tests
       run: |
         curl --fail http://localhost:8008/actuator/health || exit 1
+        curl --fail http://localhost:8008/continente/buscarGeofrafiaRegiao || exit 1
+        curl --fail ttp://localhost:8008/pais?page=0&elementsByPage=1 || 1
+        curl --fail ttp://localhost:8008/estado?page=0&elementsByPage=1 || 1
+        curl --fail ttp://localhost:8008/municipio?page=0&elementsByPage=1 || 1
 
     - name: Tear down Docker Compose
       run: |
