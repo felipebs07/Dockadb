@@ -1,0 +1,28 @@
+name: Validate Files
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Capturar autor do commit
+      run: echo "Capturar autor do commit é ${{ github.actor }}"
+      
+    - name: Checkout do código
+      uses: actions/checkout@v3
+
+    - name: Checando arquivos não permitidos
+      run: |
+        # Obtém a lista de arquivos alterados
+        changed_files=$(git diff --name-only HEAD~1 HEAD)
+
+        if echo "$changed_files" | grep -E '(^\.github/|^Dockerfile|^docker-compose.yml)'; then
+          if [ "${{ github.actor }}" != "felipebs" ]; then
+            echo "Error: Comitar arquivos no .github ou relacionados ao Docker não são permitidos."
+            exit 1
+          fi
+        fi
