@@ -62,7 +62,7 @@ jobs:
         MONGO_DB_PARAMS: ${{ secrets.MONGO_DB_PARAMS }}
     - name: Wait for service to be ready
       run: |
-        for i in {1..10}; do
+        for i in {1..60}; do
           if curl --fail http://localhost:8008/health; then
             echo "Service is up!"
             break
