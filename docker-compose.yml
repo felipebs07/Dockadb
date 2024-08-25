@@ -16,8 +16,6 @@ services:
       - MONGO_DB_USERNAME=${MONGO_DB_USERNAME}
       - MONGO_DB_PASSWORD=${MONGO_DB_PASSWORD}
       - MONGO_DB_PARAMS=${MONGO_DB_PARAMS}
-    env_file:
-      .env
 
   mongo:
     container_name: dockadb_mongo
