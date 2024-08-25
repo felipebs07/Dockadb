@@ -4,7 +4,7 @@ services:
   app:
     container_name: dockadb_app
     build:
-      context: .
+      context: ./dockadb-api
       dockerfile: Dockerfile
     ports:
       - "8008:8008"
