@@ -24,6 +24,7 @@ public class EstadoCustomRepository {
 
     @Autowired
     private IEstadoRepository estadoRepository;
+
     public IEstadoRepository estadoRepository() {
         return estadoRepository;
     }

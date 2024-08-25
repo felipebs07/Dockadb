@@ -25,7 +25,7 @@ public enum EGeografiaRegiaoLevel1 {
     }
 
     public static EGeografiaRegiaoLevel1 parseM49(String codigo) {
-        if(codigo == null) return null;
+        if (codigo == null) return null;
 
         for (var regiao : EGeografiaRegiaoLevel1.values()) {
             if (regiao.getCodigo().equals(codigo)) {

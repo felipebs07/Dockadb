@@ -3,7 +3,6 @@ package com.felipebs.dockadb_api.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.felipebs.dockadb_api.enuns.continente.EGeografiaRegiaoLevel1;
 import com.felipebs.dockadb_api.enuns.estado.ERegiaoBrasil;
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -17,7 +16,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Builder
 @Document(collection = "estado")
-@JsonPropertyOrder({ "nome", "siglaEstado", "siglaRegiao", "regiao_geografica" })
+@JsonPropertyOrder({"nome", "siglaEstado", "siglaRegiao", "regiao_geografica"})
 public class Estado {
 
     @Id
@@ -39,6 +38,6 @@ public class Estado {
         if (regiao == null) return "";
 
 
-        return regiao.getSigla() +  " - "+ regiao.getRegiao();
+        return regiao.getSigla() + " - " + regiao.getRegiao();
     }
 }

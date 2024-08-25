@@ -42,7 +42,7 @@ public enum EGeografiaRegiaoLevel2 {
     }
 
     public static EGeografiaRegiaoLevel2 parseM49(String codigo) {
-        if(codigo == null) return null;
+        if (codigo == null) return null;
         for (var region : EGeografiaRegiaoLevel2.values()) {
             if (region.getCodigo().equals(codigo)) {
                 return region;

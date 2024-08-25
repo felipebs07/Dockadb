@@ -16,7 +16,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@JsonPropertyOrder({ "nome", "regiaoGeografica1", "regiaoGeografica2" })
+@JsonPropertyOrder({"nome", "regiaoGeografica1", "regiaoGeografica2"})
 @Document(collection = "pais")
 public class Pais {
 
@@ -41,7 +41,7 @@ public class Pais {
         if (regiao == null) return "";
 
 
-        return regiao.getCodigo() +  " - "+ regiao.getNome();
+        return regiao.getCodigo() + " - " + regiao.getNome();
     }
 
     @JsonProperty("regiao_geografia_2")
@@ -52,6 +52,6 @@ public class Pais {
 
         if (regiao == null) return "";
 
-        return regiao.getCodigo() +  " - "+ regiao.getNome();
+        return regiao.getCodigo() + " - " + regiao.getNome();
     }
 }

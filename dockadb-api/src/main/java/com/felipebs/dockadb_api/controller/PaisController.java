@@ -21,9 +21,10 @@ public class PaisController {
 
 
     @GetMapping
-    public ResponseEntity<Page<Pais>> buscarPaisPaginado(@RequestParam(required = false) String nome,
-                                                       @RequestParam Integer page,
-                                                       @RequestParam Integer elementsByPage) {
+    public ResponseEntity<Page<Pais>> buscarPaisPaginado(
+            @RequestParam(required = false) String nome,
+            @RequestParam Integer page,
+            @RequestParam Integer elementsByPage) {
         return ResponseEntity.ok(paisService.buscarPaisPaginado(nome, page, elementsByPage));
     }
 }

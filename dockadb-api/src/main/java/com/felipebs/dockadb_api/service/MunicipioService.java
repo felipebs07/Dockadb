@@ -32,7 +32,7 @@ public class MunicipioService {
     public void salvarMunicipioScheduler(List<GenericoDTO> mapJson) {
         for (GenericoDTO item : mapJson) {
             Map<String, Object> microrregiao = (Map<String, Object>) item.getProperty("microrregiao");
-            Map<String, Object> estado = (Map<String, Object>) ((Map<String, Object> ) microrregiao.get("mesorregiao")).get("UF");
+            Map<String, Object> estado = (Map<String, Object>) ((Map<String, Object>) microrregiao.get("mesorregiao")).get("UF");
             String siglaEstado = estado.get("sigla").toString();
             String ibge = item.getProperty("id").toString();
             String nome = item.getProperty("nome").toString();
