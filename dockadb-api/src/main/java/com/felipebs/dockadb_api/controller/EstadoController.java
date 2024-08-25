@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/estado")
 public class EstadoController {
@@ -28,5 +31,10 @@ public class EstadoController {
             @RequestParam Integer page,
             @RequestParam Integer elementsByPage) {
         return ResponseEntity.ok(estadoService.buscarEstadoPaginado(nome, siglaEstado, siglaRegiao, page, elementsByPage));
+    }
+
+    @GetMapping("/buscarRegioes")
+    public ResponseEntity<List<Map<String, String>>> buscarRegioes() {
+        return ResponseEntity.ok(estadoService.buscarRegioes());
     }
 }

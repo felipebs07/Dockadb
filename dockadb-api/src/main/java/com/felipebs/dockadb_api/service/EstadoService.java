@@ -2,6 +2,7 @@ package com.felipebs.dockadb_api.service;
 
 import com.felipebs.dockadb_api.dto.GenericoDTO;
 import com.felipebs.dockadb_api.entity.Estado;
+import com.felipebs.dockadb_api.enuns.estado.ERegiaoBrasil;
 import com.felipebs.dockadb_api.repository.estado.EstadoCustomRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -23,6 +24,10 @@ public class EstadoService {
 
     public Page<Estado> buscarEstadoPaginado(String nome, String siglaEstado, String siglaRegiao, Integer page, Integer elementsByPage) {
         return estadoCustomRepository.buscarEstadoPaginado(nome, siglaEstado, siglaRegiao, PageRequest.of(page, elementsByPage));
+    }
+
+    public List<Map<String, String>> buscarRegioes() {
+        return ERegiaoBrasil.listEnum();
     }
 
     public void salvarEstadoScheduler(List<GenericoDTO> mapJson) {

@@ -12,10 +12,11 @@ public class Scheduler {
         this.servicoDadosApi = servicoDadosApi;
     }
 
-    // Agendar para executar no primeiro dia de cada mês, à meia-noite
-    @Scheduled(fixedDelay = 1000 * 60)
+    // Executa uma vez por ano (1º de janeiro às 00:00)
+    @Scheduled(cron = "0 0 0 1 1 *")
     public void saveCountryScheduler() throws ServicoDadosApiException {
         servicoDadosApi.salvarPaisScheduler();
         servicoDadosApi.salvarEstadoScheduler();
+        servicoDadosApi.salvarMunicipioScheduler();
     }
 }

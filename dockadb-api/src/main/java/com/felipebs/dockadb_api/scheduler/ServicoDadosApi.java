@@ -2,6 +2,7 @@ package com.felipebs.dockadb_api.scheduler;
 
 import com.felipebs.dockadb_api.exception.ServicoDadosApiException;
 import com.felipebs.dockadb_api.service.EstadoService;
+import com.felipebs.dockadb_api.service.MunicipioService;
 import com.felipebs.dockadb_api.service.PaisService;
 import com.felipebs.dockadb_api.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -24,12 +25,16 @@ public class ServicoDadosApi {
     @Autowired
     private EstadoService estadoService;
 
+    @Autowired
+    private MunicipioService municipioService;
+
 
     String urlPais = "https://servicodados.ibge.gov.br/api/v1/localidades/paises?lang=pt-br";
     String urlEstado = "https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome";
+    String urlMunicipio = "https://servicodados.ibge.gov.br/api/v1/localidades/municipios?orderBy=nome";
 
     private HttpClient client() {
-       return HttpClient.newHttpClient();
+        return HttpClient.newHttpClient();
     }
 
     private HttpRequest request(String url) {
@@ -39,33 +44,53 @@ public class ServicoDadosApi {
                 .build();
     }
 
-    public void salvarPaisScheduler() throws ServicoDadosApiException {
+    private HttpResponse<String> getHttpDadosBasicos(String url) throws ServicoDadosApiException {
         try {
-            HttpResponse<String> response = client().send(request(urlPais), HttpResponse.BodyHandlers.ofString());
+            return client().send(request(url), HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            throw new ServicoDadosApiException("Ocorreu um erro ao tentar buscar os dados", e);
+        }
+    }
+
+    public void salvarPaisScheduler() {
+        try {
+            var response = getHttpDadosBasicos(urlPais);
             if (response.statusCode() == 200) {
                 var mapJson = JsonUtil.converterJsonParaMap(response.body());
                 paisService.salvarPaisScheduler(mapJson);
             } else {
                 System.out.println("Erro na requisição: " + response.statusCode());
             }
-        } catch (IOException | InterruptedException e) {
-            // Captura IOException e InterruptedException e lança uma ServicoDadosApiException
-            throw new ServicoDadosApiException("Error searching for countries", e);
+        } catch (ServicoDadosApiException | IOException e) {
+            e.getStackTrace();
         }
     }
 
     public void salvarEstadoScheduler() throws ServicoDadosApiException {
         try {
-            HttpResponse<String> response = client().send(request(urlEstado), HttpResponse.BodyHandlers.ofString());
+            var response = getHttpDadosBasicos(urlEstado);
             if (response.statusCode() == 200) {
                 var mapJson = JsonUtil.converterJsonParaMap(response.body());
                 estadoService.salvarEstadoScheduler(mapJson);
             } else {
                 System.out.println("Erro na requisição: " + response.statusCode());
             }
-        } catch (IOException | InterruptedException e) {
-            // Captura IOException e InterruptedException e lança uma ServicoDadosApiException
-            throw new ServicoDadosApiException("Error searching for countries", e);
+        } catch (ServicoDadosApiException | IOException e) {
+            e.getStackTrace();
+        }
+    }
+
+    public void salvarMunicipioScheduler() throws ServicoDadosApiException {
+        try {
+            var response = getHttpDadosBasicos(urlMunicipio);
+            if (response.statusCode() == 200) {
+                var mapJson = JsonUtil.converterJsonParaMap(response.body());
+                municipioService.salvarMunicipioScheduler(mapJson);
+            } else {
+                System.out.println("Erro na requisição: " + response.statusCode());
+            }
+        } catch (ServicoDadosApiException | IOException e) {
+            e.getStackTrace();
         }
     }
 }
