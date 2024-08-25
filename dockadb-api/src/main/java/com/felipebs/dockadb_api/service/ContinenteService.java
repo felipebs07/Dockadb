@@ -1,43 +1,30 @@
 package com.felipebs.dockadb_api.service;
 
-import com.felipebs.dockadb_api.entity.Continente;
-import com.felipebs.dockadb_api.repository.continenteRy.ContinenteCustomRepository;
+import com.felipebs.dockadb_api.dto.ContinenteDTO;
+import com.felipebs.dockadb_api.enuns.continente.EGeografiaRegiaoLevel1;
+import com.felipebs.dockadb_api.enuns.continente.EGeografiaRegiaoLevel2;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @Slf4j
 public class ContinenteService {
 
-    private final ContinenteCustomRepository continenteRepository;
-
-    public ContinenteService(ContinenteCustomRepository continenteRepository) {
-        this.continenteRepository = continenteRepository;
+    public List<Map<String, String>> buscarGeofrafiaRegiao1() {
+        return EGeografiaRegiaoLevel1.listEnum();
     }
 
-    public Page<Continente> findPaginationContinente(String nome, Integer page, Integer elementsByPage) {
-        return continenteRepository.findContinente(nome, PageRequest.of(page, elementsByPage));
+    public List<Map<String, String>> buscarGeofrafiaRegiao2() {
+        return EGeografiaRegiaoLevel2.listEnum();
     }
 
-    public Continente create(Continente entity) {
-        entity.setDatCriacao(LocalDateTime.now());
-
-        return continenteRepository.continenteRepository().save(entity);
-    }
-
-    public HttpEntity<Object> delete(long codContinente) {
-        try {
-            continenteRepository.continenteRepository().deleteById(codContinente);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch(Exception e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ContinenteDTO buscarGeoGrafiaRegiao() {
+        return ContinenteDTO.builder()
+                .regiao_geografia_1(EGeografiaRegiaoLevel1.listEnum())
+                .regiao_geografia_2(EGeografiaRegiaoLevel2.listEnum())
+                .build();
     }
 }
