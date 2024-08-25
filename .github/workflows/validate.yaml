@@ -1,9 +1,11 @@
 name: Validate Files
 
 on:
-  push:
+  pull_request:
     branches:
       - main
+    types: [opened, synchronize]
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -11,15 +13,30 @@ jobs:
     steps:
     - name: Print user
       run: echo "User is ${{ github.actor }}"
-      
+
     - name: Checkout code
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
     - name: Check for unwanted files
       run: |
         base_sha=${{ github.event.pull_request.base.sha }}
         head_sha=${{ github.event.pull_request.head.sha }}
+        echo "Base SHA: $base_sha"
+        echo "Head SHA: $head_sha"
+
+        if [ -z "$base_sha" ] || [ -z "$head_sha" ]; then
+          echo "Error: Base SHA or Head SHA not found."
+          exit 1
+        fi
+
+        # Obtém a lista de arquivos alterados no pull request
         changed_files=$(git diff --name-only $base_sha $head_sha)
+
+        echo "Changed files: $changed_files"
+
+        # Verifica se algum dos arquivos alterados está na lista de arquivos indesejados
         if echo "$changed_files" | grep -E '(^\.github/|^Dockerfile|^docker-compose.yml)'; then
           if [ "${{ github.actor }}" != "felipebs07" ]; then
             echo "Error: Committing files in .github/ or Docker-related files is not allowed unless you are felipebs."
