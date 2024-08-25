@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: dockadb_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8008:8008"
+    depends_on:
+      - mongo
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - MONGO_DB_DATABASE=${MONGO_DB_DATABASE}
+      - MONGO_DB_USERNAME=${MONGO_DB_USERNAME}
+      - MONGO_DB_PASSWORD=${MONGO_DB_PASSWORD}
+      - MONGO_DB_PARAMS=${MONGO_DB_PARAMS}
+    env_file:
+      .env
+
+  mongo:
+    container_name: dockadb_mongo
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:

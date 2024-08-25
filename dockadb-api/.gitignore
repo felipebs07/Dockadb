@@ -1,4 +1,7 @@
-HELP.md
+# Ignorar arquivos de configuração de ambiente
+.env
+
+### Maven ###
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
