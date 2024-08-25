@@ -62,7 +62,7 @@ jobs:
         MONGO_DB_PARAMS: ${{ secrets.MONGO_DB_PARAMS }}
     - name: Wait for service to be ready
       run: |
-        for i in {1..60}; do
+        for i in {1..10}; do
           if curl --fail http://localhost:8008/actuator/health; then
             echo "Service is up!"
             break
@@ -78,9 +78,7 @@ jobs:
         
     - name: Run tests
       run: |
-        # Aqui você pode rodar testes ou comandos que verifiquem a funcionalidade da sua aplicação
-        # Por exemplo, você pode rodar um comando curl para verificar se a aplicação está rodando
-        curl --fail http://localhost:8008/health || exit 1
+        curl --fail http://localhost:8008/actuator/health || exit 1
 
     - name: Tear down Docker Compose
       run: |
