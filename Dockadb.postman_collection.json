@@ -1,0 +1,426 @@
+{
+	"info": {
+		"_postman_id": "be75ccd6-ee85-42c9-9359-d461ad870cf2",
+		"name": "Dockadb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "13182930"
+	},
+	"item": [
+		{
+			"name": "dev",
+			"item": [
+				{
+					"name": "Continente",
+					"item": [
+						{
+							"name": "Região Geografia",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localhost}}/continente/buscarGeofrafiaRegiao?indRegiao=",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"continente",
+										"buscarGeofrafiaRegiao"
+									],
+									"query": [
+										{
+											"key": "indRegiao",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Pais",
+					"item": [
+						{
+							"name": "Buscar pais paginado",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localhost}}/pais?page=0&nome=&elementsByPage=100000",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"pais"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "nome",
+											"value": ""
+										},
+										{
+											"key": "elementsByPage",
+											"value": "100000"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Estado",
+					"item": [
+						{
+							"name": "Buscar estado paginado",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localhost}}/estado?page=0&elementsByPage=100000&siglaEstado=&siglaRegiao=&nome=",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"estado"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "elementsByPage",
+											"value": "100000"
+										},
+										{
+											"key": "siglaEstado",
+											"value": ""
+										},
+										{
+											"key": "siglaRegiao",
+											"value": ""
+										},
+										{
+											"key": "nome",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar Regiões do brasil",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{localhost}}/estado/buscarRegioes"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Municipio",
+					"item": [
+						{
+							"name": "Buscar municipio paginado",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localhost}}/municipio?page=0&elementsByPage=100000&siglaEstado=&nome=",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"municipio"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "elementsByPage",
+											"value": "100000"
+										},
+										{
+											"key": "ibge",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "siglaEstado",
+											"value": ""
+										},
+										{
+											"key": "nome",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar municipios com estado completo paginado",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localhost}}/municipio/buscarComEstadoCompleto?page=0&elementsByPage=100&siglaEstado=&nome",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"municipio",
+										"buscarComEstadoCompleto"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "elementsByPage",
+											"value": "100"
+										},
+										{
+											"key": "siglaEstado",
+											"value": ""
+										},
+										{
+											"key": "nome",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "algo",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "prod",
+			"item": [
+				{
+					"name": "Continente",
+					"item": [
+						{
+							"name": "Região Geografia",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localhost:prod}}/continente/buscarGeofrafiaRegiao?indRegiao=",
+									"host": [
+										"{{localhost:prod}}"
+									],
+									"path": [
+										"continente",
+										"buscarGeofrafiaRegiao"
+									],
+									"query": [
+										{
+											"key": "indRegiao",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Pais",
+					"item": [
+						{
+							"name": "Buscar pais paginado",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localhost:prod}}/pais?page=0&nome=&elementsByPage=100000",
+									"host": [
+										"{{localhost:prod}}"
+									],
+									"path": [
+										"pais"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "nome",
+											"value": ""
+										},
+										{
+											"key": "elementsByPage",
+											"value": "100000"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Estado",
+					"item": [
+						{
+							"name": "Buscar estado paginado",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localhost:prod}}/estado?page=0&elementsByPage=100000&siglaEstado=&siglaRegiao=&nome=",
+									"host": [
+										"{{localhost:prod}}"
+									],
+									"path": [
+										"estado"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "elementsByPage",
+											"value": "100000"
+										},
+										{
+											"key": "siglaEstado",
+											"value": ""
+										},
+										{
+											"key": "siglaRegiao",
+											"value": ""
+										},
+										{
+											"key": "nome",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar Regiões do brasil",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{localhost:prod}}/estado/buscarRegioes"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Municipio",
+					"item": [
+						{
+							"name": "Buscar municipio paginado",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localhost:prod}}/municipio?page=0&elementsByPage=100000&siglaEstado=&nome=",
+									"host": [
+										"{{localhost:prod}}"
+									],
+									"path": [
+										"municipio"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "elementsByPage",
+											"value": "100000"
+										},
+										{
+											"key": "ibge",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "siglaEstado",
+											"value": ""
+										},
+										{
+											"key": "nome",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar municipios com estado completo paginado",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localhost:prod}}/municipio/buscarComEstadoCompleto?page=0&elementsByPage=100&siglaEstado=&nome",
+									"host": [
+										"{{localhost:prod}}"
+									],
+									"path": [
+										"municipio",
+										"buscarComEstadoCompleto"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "elementsByPage",
+											"value": "100"
+										},
+										{
+											"key": "siglaEstado",
+											"value": ""
+										},
+										{
+											"key": "nome",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
