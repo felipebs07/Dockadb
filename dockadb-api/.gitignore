@@ -1,5 +1,7 @@
 # Ignorar arquivos de configuração de ambiente
 .env
+Dockerfile*
+docker-compose*.yml
 
 ### Maven ###
 target/
