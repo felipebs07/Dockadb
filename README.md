@@ -15,7 +15,7 @@ O **DockaDB API** é uma API desenvolvida com **Spring Boot**, **MongoDB** e **D
 
 ## Funcionalidades
 
--   Consultar **continentes** (UN 49 formatação level 1 e level 2).
+-   Consultar **continentes** (UN 49 com level 1 e level 2).
 -   Consultar **regiões do Brasil**.
 -   Consultar **estados** do Brasil.
 -   Consultar **cidades** do Brasil.
@@ -36,7 +36,7 @@ O **DockaDB API** é uma API desenvolvida com **Spring Boot**, **MongoDB** e **D
     
 2.  Navegue até o diretório do dockadb-api e gere um arquivo .env, dessa forma, cada ponto de interrogação precisa ser substituído com os dados do Database e conexões criadas por vocês no mongodb atlas:
 
-		    MONGO_DB_DATABASE=?
+   		MONGO_DB_DATABASE=?
     		MONGO_DB_USERNAME=?
     		MONGO_DB_PASSWORD=?
     		MONGO_DB_PARAMS=?    Exemplo: retryWrites=true&w=majority&appName=APP
@@ -48,8 +48,8 @@ O **DockaDB API** é uma API desenvolvida com **Spring Boot**, **MongoDB** e **D
 	    
 4. **Avisos sobre docker**
 	O Docker está configurado para ser buildado  e verificado pelo git action, para funcionar localmente é necessário alguns ajustes:
-		1. Crie um arquivo .env na pasta principal onde esta localizado o docker-compose, e adicione após a linha environment nos services o comando:  `env_file:   .env`
-		2. Adicione no dockerfile que esta no diretório do dockadb-api, coloque logo abaixo do **COPY target** o comando: `COPY .env /app/.env`
+	1. Crie um arquivo .env na pasta principal onde esta localizado o docker-compose, e adicione após a linha environment nos services o comando:  `env_file:   .env`
+	2. Adicione no dockerfile que esta no diretório do dockadb-api, coloque logo abaixo do **COPY target** o comando: `COPY .env /app/.env`
 		
 4. Porta de **desenvolvimento** é localhost:8000
 5. Porta de **produção** é localhost:8008
